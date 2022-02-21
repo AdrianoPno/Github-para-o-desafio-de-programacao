@@ -1,23 +1,37 @@
-import java.util.Scanner;
 
-public class App {
-	public static void main(String[] args) {
-		System.out.println("Hello World");
-		
-		Scanner entrada = new Scanner(System.in);
-        
-		System.out.println("Digite o numero de degraus:");
-		int numero = entrada.nextInt();
-		
-        
-        for (int i=1; i<= numero; i++) {
-            
-            for (int j=numero-i; j >= 1; j--)
-                System.out.print(" ");
-                for (int jw =1; jw <= i; jw++)
-                System.out.print("*");
-                System.out.println(" ");
-        entrada.close();
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.*;
+
+
+class App {
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println();
+        System.out.println("CRIANDO UMA SENHA FORTE!");
+        System.out.println("Digite uma senha");
+        System.out.println();
+
+        String senha = in.nextLine();
+        Pattern p = Pattern.compile("/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/");
+        Matcher m = p.matcher(senha);
+    
+        System.out.println(m.matches());
+
+        if (!senha.matches(senha)){
+            System.out.println("Senha Criada com sucesso");
         }
+        
     }
+
 }
+
+    
+
+    
+
